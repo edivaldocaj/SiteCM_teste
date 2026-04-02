@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --brand-navy: #152138;
+    --brand-navy-light: #1c2d4a;
+    --brand-silver: #b8bfc8;
+    --brand-silver-light: #d4d8de;
+    --brand-champagne: #f1eae2;
+    --brand-gold: #ede1c3;
+    --brand-gold-dark: #c4a96a;
+    --brand-cream: #faf8f5;
+    --brand-urgency: #7a1b1b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-body text-brand-navy bg-brand-cream;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background: var(--brand-gold);
+    color: var(--brand-navy);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 
+           bg-brand-gold-dark text-white font-body font-semibold text-sm uppercase tracking-wider
+           rounded-sm transition-all duration-300 
+           hover:bg-brand-navy hover:text-brand-champagne
+           focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-offset-2;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+           bg-[#25D366] text-white font-body font-semibold text-sm uppercase tracking-wider
+           rounded-sm transition-all duration-300
+           hover:bg-[#1da851] hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4
+           border-2 border-brand-silver text-brand-silver font-body font-semibold text-sm uppercase tracking-wider
+           rounded-sm transition-all duration-300
+           hover:border-brand-gold hover:text-brand-gold
+           focus:outline-none focus:ring-2 focus:ring-brand-silver focus:ring-offset-2;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28;
+  }
+
+  .container-narrow {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .gradient-navy {
+    background: linear-gradient(135deg, #152138 0%, #1c2d4a 50%, #0e1628 100%);
+  }
+
+  .gradient-silver {
+    background: linear-gradient(135deg, #b8bfc8 0%, #d4d8de 50%, #e8ebee 100%);
+  }
+
+  .text-silver-gradient {
+    background: linear-gradient(135deg, #b8bfc8, #e8ebee, #b8bfc8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--brand-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-silver);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-navy);
+}
+
+/* WhatsApp floating button pulse */
+.whatsapp-pulse::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: #25D366;
+  opacity: 0;
+  animation: whatsappPulse 2s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.2); }
+}
